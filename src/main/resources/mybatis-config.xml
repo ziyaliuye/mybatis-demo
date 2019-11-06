@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- Mybatis 配置文件都被这个标签包着 -->
+<configuration>
+
+    <!-- 指定 MyBatis 数据库配置文件 -->
+    <properties resource="db.properties"/>
+
+    <!-- 指定日志文件系统为Log4J2 -->
+    <settings>
+        <setting name="logImpl" value="LOG4J2"/>
+    </settings>
+
+    <!-- 环境配置， 可以配置多个环境 default 属性表示当项目使用的环境 -->
+    <environments default="">
+        <environment id="">
+            <!-- 事务设置， 这里设置为使用原生JDBC事务 -->
+            <transactionManager type="JDBC"></transactionManager>
+
+            <!-- dataSource指数据源配置，POOLED是JDBC连接对象的数据源连接池的实现。 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 告诉了MyBatis去哪里找持久化类的映射类 mapper 文件 -->
+    <mappers>
+        <mapper resource="cn/cnm/mapper/FlowerMapper.xml" />
+    </mappers>
+
+
+</configuration>

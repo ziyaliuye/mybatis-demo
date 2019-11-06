@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- xml文件对应dao层的实现类， 会被MyBatis解析成实现类 -->
+<!-- namespace属性：可以理解成类的全路径（包名+类名） -->
+<mapper namespace="cn.cnm.mapper.FlowerMapper">
+	<!-- 标签名代表要执行的操作， id可以理解为方法名 -->
+	<!-- parameterType：参数类型 resultType：返回值类型 -->
+	<!-- 如果一行返回值是list， 在 resultType 值中需要写 list的泛型 - -->
+	<!-- 因为MyBatis底层是对JDBC的封装， ResultSet一次只能读一行， 所以这里返回值类型说的是返回的一行是什么类型 -->
+	<select id="selectAll" resultType="cn.cnm.pojo.Flower">
+		select * from flower
+	</select>
+</mapper>
