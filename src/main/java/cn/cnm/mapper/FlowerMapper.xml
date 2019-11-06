@@ -10,7 +10,7 @@
 	<!-- parameterType：参数类型 resultType：返回值类型 -->
 	<!-- 如果一行返回值是list， 在 resultType 值中需要写 list的泛型 - -->
 	<!-- 因为MyBatis底层是对JDBC的封装， ResultSet一次只能读一行， 所以这里返回值类型说的是返回的一行是什么类型 -->
-	<select id="selectAll" resultType="cn.cnm.pojo.Flower">
+	<select id="selectAll" resultType="flower">
 		select * from flower
 	</select>
 </mapper>

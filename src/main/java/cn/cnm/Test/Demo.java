@@ -28,7 +28,7 @@ public class Demo {
             // 使用工厂模式（名称带 Factory）  生产 SqlSession
             SqlSession session = factory.openSession();
             // 开始调用 具体方法看什么操作和什么返回类型， 参数则是 namespace+id（类似于全路径+方法名）
-            List<Flower> list = session.selectList("cn.cnm.mapper.flowerMapper.selectAll");
+            List<Flower> list = session.selectList("cn.cnm.mapper.FlowerMapper.selectAll");
             list.stream().forEach(System.out::println);
             // 关闭连接， 不然一直处于连接状态
             session.close();
