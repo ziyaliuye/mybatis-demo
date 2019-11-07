@@ -1,5 +1,6 @@
 package cn.cnm.mapper;
 
+import cn.cnm.pojo.Flower;
 import java.util.List;
 
 /**
@@ -10,5 +11,5 @@ import java.util.List;
  * @date 2019/11/6 17:14
  */
 public interface FlowerMapper {
-    public List selectAll();
+    public List<Flower> selectAll();
 }

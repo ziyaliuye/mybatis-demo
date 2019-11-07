@@ -17,7 +17,7 @@
     <!-- typeAliases标签就是别名处理器， 可以为Java类取别名， 并且注意别名不区分大小写 -->
     <typeAliases>
         <!-- type：指定要起别名的类全类名， 默认别名是小写 alias：指定的别名 -->
-        <typeAlias type="cn.cnm.pojo.Flower" alias="flower"></typeAlias>
+        <!--        <typeAlias type="cn.cnm.pojo.Flower" alias="flower"></typeAlias>-->
         <!-- package：为某个包下的所有类取别名 -->
         <!-- name：指定包名， 会将包以及包下的所有类取别名 -->
         <!-- 如果子包下有重名的类， 则需要单独给其中一个类取另一个名字以防冲突， 可以使用@Alias()注解指定 -->
@@ -28,7 +28,7 @@
     <environments default="">
         <environment id="">
             <!-- 事务设置， 这里设置为使用原生JDBC事务 -->
-            <transactionManager type="JDBC"></transactionManager>
+            <transactionManager type="JDBC"/>
 
             <!-- dataSource指数据源配置，POOLED是JDBC连接对象的数据源连接池的实现。 -->
             <dataSource type="UNPOOLED">
@@ -41,8 +41,14 @@
     </environments>
 
     <!-- 告诉了MyBatis去哪里找持久化类的映射类 mapper 文件 -->
+    <!-- resource 指定单个类路径下的SQL映射文件 -->
+    <!-- <package> 引入指定包路径下以及子包下的所有SQL映射文件-->
+    <!-- url 引入网络或者磁盘中的SQL映射文件 -->
+    <!-- class 引入（注册）接口， 要求SQL映射文件名和接口名一致， 并且在同一包下 -->
     <mappers>
-        <mapper resource="cn/cnm/mapper/FlowerMapper.xml" />
+        <!--        <mapper resource="cn/cnm/mapper/FlowerMapper.xml" />-->
+        <!--        <mapper class="cn.cnm.mapper.FlowerAnnotationMapper" />-->
+        <package name="cn.cnm.mapper"/>
     </mappers>
 
     <!-- 多数据库支持， 设置后MyBatis可以现有的SQL转换成对应数据库的SQL并执行 -->

@@ -1,6 +1,6 @@
 package cn.cnm.Test;
 
-import cn.cnm.mapper.FlowerMapper;
+import cn.cnm.mapper.FlowerAnnotationMapper;
 import cn.cnm.pojo.Flower;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -15,9 +15,9 @@ import java.util.List;
  * @version 1.0
  * @Description
  * @Email 414955507@qq.com
- * @date 2019/11/6 17:20
+ * @date 2019/11/7 10:10
  */
-public class InterfaceDemo {
+public class AnnotationDemo {
     public static void main(String[] args) {
         InputStream inputStream;
         try {
@@ -29,13 +29,12 @@ public class InterfaceDemo {
             SqlSession session = factory.openSession();
 
             // 获取接口的实现类, 由MyBatis自动产生代理对象
-            FlowerMapper flowerMapper = session.getMapper(FlowerMapper.class);
+            FlowerAnnotationMapper flowerAnnotationMapper = session.getMapper(FlowerAnnotationMapper.class);
             // 开始调用实例的方法， MyBatis会自动寻找对应的XML文件中的SQL并执行
-            List<Flower> list = flowerMapper.selectAll();
+            List<Flower> list = flowerAnnotationMapper.getFlower();
             list.forEach(System.out::println);
             // 关闭连接， 不然一直处于连接状态
             session.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
