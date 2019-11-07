@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- xml文件对应dao层的实现类， 会被MyBatis解析成实现类 -->
 <!-- namespace属性：可以理解成类的全路径（包名+类名） -->
 <mapper namespace="cn.cnm.mapper.FlowerMapper">
-	<!-- 标签名代表要执行的操作， id可以理解为方法名 -->
-	<!-- parameterType：参数类型 resultType：返回值类型 -->
-	<!-- 如果一行返回值是list， 在 resultType 值中需要写 list的泛型 - -->
-	<!-- 因为MyBatis底层是对JDBC的封装， ResultSet一次只能读一行， 所以这里返回值类型说的是返回的一行是什么类型 -->
-	<select id="selectAll" resultType="flower">
+    <!-- 标签名代表要执行的操作， id可以理解为方法名 -->
+    <!-- parameterType：参数类型 resultType：返回值类型 -->
+    <!-- 如果一行返回值是list， 在 resultType 值中需要写 list的泛型 - -->
+    <!-- 因为MyBatis底层是对JDBC的封装， ResultSet一次只能读一行， 所以这里返回值类型说的是返回的一行是什么类型 -->
+    <select id="selectAll" resultType="flower">
 		select * from flower
 	</select>
+
+    <!-- 假设这里的flower表的id字段为自增， 那么可以通过设置useGeneratedKeys="true"开启自增主键获取 -->
+    <!-- keyProperty：指定封装对应主键的属性， 也就是获取到的自增主键存入JavaBean中哪个属性 -->
+    <insert id="insertOne" useGeneratedKeys="true" keyProperty="id">
+		insert into flower(name, price, production) values ("西兰花", 18.8, "woman...")
+	</insert>
+
+    <!-- 不支持主键自增的数据库， 例如Oracle， 就需要使用<selectKey>获取序列的下一个序列号然后操作 -->
+    <insert id="insertOra">
+        <!-- 在便签中编写查询序列号的语句-->
+        <!-- keyProperty：将查询出来的序列号封装进JavaBean中指定属性， 并且下面SQL语句中可以当参数使用 -->
+        <!-- order="BEFORE" 表示查询语句在insert语句执行之前（废话） -->
+        <!-- resultType：查询出的序列号的类型 -->
+        <!-- databaseId：在mybatis-config.xml中预先配置好的不同版本数据库别名中指定当前语句为Oracle库 -->
+        <selectKey keyProperty="id" order="BEFORE" resultType="Integer " databaseId="oracle">
+            select flower_id.nextval from dual
+        </selectKey>
+        insert into flower(id, name, price, production) values (#{id}, "西兰花", 18.8, "woman...")
+    </insert>
 </mapper>

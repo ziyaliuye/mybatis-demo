@@ -25,11 +25,12 @@ public class Demo {
             inputStream = Resources.getResourceAsStream("mybatis-config.xml");
             // 使用构建者模式（名称带 build）简化对象实例化过程
             SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
-            // 使用工厂模式（名称带 Factory）  生产 SqlSession
+            // 使用工厂模式（名称带 Factory）生产SqlSession
+            // （无参方法返回的是不自动提交session，需要手工提交，设置为true表示自动提交）
             SqlSession session = factory.openSession();
             // 开始调用 具体方法看什么操作和什么返回类型， 参数则是 namespace+id（类似于全路径+方法名）
             List<Flower> list = session.selectList("cn.cnm.mapper.FlowerMapper.selectAll");
-            list.stream().forEach(System.out::println);
+            list.forEach(System.out::println);
             // 关闭连接， 不然一直处于连接状态
             session.close();
 

@@ -9,9 +9,13 @@
     <!-- 指定 MyBatis 数据库配置文件， properties标签的作用是引入外部properties文件配置内容 -->
     <properties resource="db.properties"/>
 
-    <!-- 指定日志文件系统为Log4J2 -->
     <settings>
+        <!-- 指定日志文件系统为Log4J2 -->
         <setting name="logImpl" value="LOG4J2"/>
+        <!-- 开启延迟加载， 这样在使用关联查询时， 除非使用到了被关联的表信息， 否则加载， 节省资源 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 该属性设置为true后， 会加载每一个字段， 包括关联的字段， 所以这里需要禁用 -->
+        <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
 
     <!-- typeAliases标签就是别名处理器， 可以为Java类取别名， 并且注意别名不区分大小写 -->
