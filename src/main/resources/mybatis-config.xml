@@ -16,6 +16,8 @@
         <setting name="lazyLoadingEnabled" value="true"/>
         <!-- 该属性设置为true后， 会加载每一个字段， 包括关联的字段， 所以这里需要禁用 -->
         <setting name="aggressiveLazyLoading" value="false"/>
+        <!-- 开启全局二级缓存 -->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <!-- typeAliases标签就是别名处理器， 可以为Java类取别名， 并且注意别名不区分大小写 -->

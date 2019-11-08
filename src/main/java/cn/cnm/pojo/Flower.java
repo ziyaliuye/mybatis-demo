@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * @author lele
  * @version 1.0
@@ -16,7 +18,9 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor // 全参构造
 @NoArgsConstructor // 无参构造
 @Accessors(chain = true) // 链式风格访问
-public class Flower {
+public class Flower implements Serializable {
+    public static final long serialVersionUID = 1234L;
+
     private int id;
     private String name;
     private double price;

@@ -6,6 +6,11 @@
 <!-- xml文件对应dao层的实现类， 会被MyBatis解析成实现类 -->
 <!-- namespace属性：可以理解成类的全路径（包名+类名） -->
 <mapper namespace="cn.cnm.mapper.FlowerMapper">
+    <!-- 表名当前namespace下的所有查询SQL都开启二级缓存 -->
+    <cache eviction="FIFO" flushInterval="36000" readOnly="true" size="128"></cache>
+    <!-- 使用Ehcache缓存， 可以加入<property>标签指定参数， 但一般直接在ehcache.xml中配置 -->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"></cache>-->
+
     <!-- 标签名代表要执行的操作， id可以理解为方法名 -->
     <!-- parameterType：参数类型 resultType：返回值类型 -->
     <!-- 如果一行返回值是list， 在 resultType 值中需要写 list的泛型 - -->
