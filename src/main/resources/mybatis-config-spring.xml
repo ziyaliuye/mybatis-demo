@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- Mybatis 配置文件都被这个标签包着 -->
+<configuration>
+    <settings>
+        <!-- 指定日志文件系统为Log4J2 -->
+        <setting name="logImpl" value="LOG4J2"/>
+        <!-- 开启延迟加载， 这样在使用关联查询时， 除非使用到了被关联的表信息， 否则加载， 节省资源 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 该属性设置为true后， 会加载每一个字段， 包括关联的字段， 所以这里需要禁用 -->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!-- 开启全局二级缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <!-- typeAliases标签就是别名处理器， 可以为Java类取别名， 并且注意别名不区分大小写 -->
+    <typeAliases>
+        <!-- type：指定要起别名的类全类名， 默认别名是小写 alias：指定的别名 -->
+        <!--        <typeAlias type="cn.cnm.pojo.Flower" alias="flower"></typeAlias>-->
+        <!-- package：为某个包下的所有类取别名 -->
+        <!-- name：指定包名， 会将包以及包下的所有类取别名 -->
+        <!-- 如果子包下有重名的类， 则需要单独给其中一个类取另一个名字以防冲突， 可以使用@Alias()注解指定 -->
+        <package name="cn.cnm.pojo"/>
+    </typeAliases>
+
+</configuration>

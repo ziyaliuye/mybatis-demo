@@ -41,6 +41,8 @@
             <groupId>org.mybatis.caches</groupId>
             <artifactId>mybatis-ehcache</artifactId>
             <version>1.1.0</version>
+            <!-- 为了不影响其他使用， 先将这里屏蔽掉 -->
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -57,7 +59,16 @@
             <artifactId>spring-webmvc</artifactId>
             <version>5.2.1.RELEASE</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.2.1.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.5.4</version>
+        </dependency>
     </dependencies>
     <build>
         <resources>
