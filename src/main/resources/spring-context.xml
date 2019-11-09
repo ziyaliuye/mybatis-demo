@@ -50,7 +50,7 @@
     </bean>
 
     <!--配置一个可以进行批量执行的sqlSession -->
-    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+    <bean id="batchSqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
         <constructor-arg name="executorType" value="BATCH"></constructor-arg>
     </bean>
@@ -63,4 +63,5 @@
         <property name="basePackage" value="com.atguigu.mybatis.dao"></property>
     </bean>
     -->
+
 </beans>
