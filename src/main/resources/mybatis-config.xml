@@ -5,7 +5,6 @@
 
 <!-- Mybatis 配置文件都被这个标签包着 -->
 <configuration>
-
     <!-- 指定 MyBatis 数据库配置文件， properties标签的作用是引入外部properties文件配置内容 -->
     <properties resource="db.properties"/>
 
@@ -29,6 +28,11 @@
         <!-- 如果子包下有重名的类， 则需要单独给其中一个类取另一个名字以防冲突， 可以使用@Alias()注解指定 -->
         <package name="cn.cnm.pojo"/>
     </typeAliases>
+
+    <!-- 开启插件， 指定插件的主类 -->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
 
     <!-- 环境配置， 可以配置多个环境 default 属性表示当项目使用的环境 -->
     <environments default="">
