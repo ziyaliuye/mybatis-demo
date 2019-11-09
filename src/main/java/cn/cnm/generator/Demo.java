@@ -21,6 +21,7 @@ import java.util.List;
  */
 public class Demo {
     public static void main(String[] args) throws IOException, XMLParserException, InvalidConfigurationException, SQLException, InterruptedException {
+        // 获取当前运行环境的绝对路径， File经常找不到文件
         System.out.println(new File(".").getAbsolutePath());
         List<String> warnings = new ArrayList<>();
         File configFile = new File("src/main/resources/generatorConfig.xml");
