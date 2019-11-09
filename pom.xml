@@ -37,13 +37,12 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.16</version>
         </dependency>
-        <dependency>
-            <groupId>org.mybatis.caches</groupId>
-            <artifactId>mybatis-ehcache</artifactId>
-            <version>1.1.0</version>
-            <!-- 为了不影响其他使用， 先将这里屏蔽掉 -->
-            <scope>compile</scope>
-        </dependency>
+        <!-- 为了不影响其他使用， 先将这里屏蔽掉 -->
+        <!--        <dependency>-->
+        <!--            <groupId>org.mybatis.caches</groupId>-->
+        <!--            <artifactId>mybatis-ehcache</artifactId>-->
+        <!--            <version>1.1.0</version>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
