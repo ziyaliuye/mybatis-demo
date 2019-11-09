@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 该属性指定的是本机的MySQL驱动包的绝对路径地址。 -->
+    <!-- <classPathEntry location="D:/mvenrepository/mysql/mysql-connector-java/8.0.16/mysql-connector-java-8.0.16.jar" /> -->
+
+    <!-- targetRuntime="MyBatis3" 可以生成带条件的增删改查 -->
+    <!-- targetRuntime="MyBatis3Simple" 可以生成基本的增删改查 -->
+    <context id="testTables" targetRuntime="MyBatis3">
+        <!-- 是否去除自动生成的注释（一堆英文）， true表示去除， false表示不去除 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库链接URL、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.58.128:3306/ssm?serverTimezone=UTC"
+                        userId="root" password="root">
+        </jdbcConnection>
+
+        <!-- 该标签默认false， 把JDBC、DECIMAL、NUMERIC类型解析为Integer，为true时将三种类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 该标签用于指定生成的实体类的所在包名以及代码生成位置 -->
+        <javaModelGenerator targetPackage="cn.cnm.pojo"
+                            targetProject=".\src\main\java">
+            <!-- 是否让Schema（这里指的是数据库名）作为包的后缀：cn.cnm.pojo.ssm ssm就是数据库名 -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 为true时表示从数据库返回的值清理前后的空格， false表示不清理 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 该标签用于指定生成的*.xml文件的所在包名以及代码生成位置 -->
+        <sqlMapGenerator targetPackage="cn.cnm.mapper"
+                         targetProject=".\src\main\java">
+            <!-- 为true时让Schema作为生成包的后缀 cn.cnm.mapper.ssm ssm就是数据库名 -->
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- 该标签用于指定生成的mapper文件的所在包名以及代码生成位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="cn.cnm.mapper" targetProject=".\src\main\java">
+            <!-- 为true时让Schema作为生成包的后缀 cn.cnm.mapper.ssm ssm就是数据库名 -->
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+
+        <!-- 该标签用于指定需要生成的数据表名称以及生成后的实体类名称, 其中table标签可以使用多次，一次对应一张表 -->
+        <!-- tableName：对应数据库中的表名 -->
+
+        <!-- <table tableName="sys_user" domainObjectName="SysUser" enableCountByExample="false"
+            enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+            selectByExampleQueryId="false" /> -->
+
+        <!-- 指定数据库表， schema表示database的名称， 比如这里写 schema="ssm"， 那么上面jdbc的链接地址里的ssm要去掉， 所以留空就行 -->
+        <table schema="" tableName="flower"></table>
+    </context>
+</generatorConfiguration>
