@@ -59,6 +59,14 @@ public class PageHelperDemo {
             System.out.println("是否有下一页：" + pageInfo.isHasNextPage());
             System.out.println("当前页码是否为最后一页：" + pageInfo.isIsLastPage());
 
+            /* PageInfo两个参数构造器， 第二个参数为导航， 可以设置连续返回多少页 */
+            PageInfo pageInfoNavigation = new PageInfo(list, 2);
+            // 获取连续显示的页码, 用于前台展示， 类似于贴吧的分页导航， 可以快速切换分页
+            System.out.println("连续分页页码：");
+            int[] pageNums = pageInfoNavigation.getNavigatepageNums();
+            for (int num : pageNums) {
+                System.out.println(num);
+            }
             session.close();
         } catch (IOException e) {
             e.printStackTrace();
