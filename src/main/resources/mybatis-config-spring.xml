@@ -16,14 +16,15 @@
         <setting name="cacheEnabled" value="true"/>
     </settings>
 
+    <!-- 给实体类取别名， 不建议使用这个， 日志会乱码， 在Spring配置文件中配置 -->
     <!-- typeAliases标签就是别名处理器， 可以为Java类取别名， 并且注意别名不区分大小写 -->
-    <typeAliases>
-        <!-- type：指定要起别名的类全类名， 默认别名是小写 alias：指定的别名 -->
-        <!--        <typeAlias type="cn.cnm.pojo.Flower" alias="flower"></typeAlias>-->
-        <!-- package：为某个包下的所有类取别名 -->
-        <!-- name：指定包名， 会将包以及包下的所有类取别名 -->
-        <!-- 如果子包下有重名的类， 则需要单独给其中一个类取另一个名字以防冲突， 可以使用@Alias()注解指定 -->
-        <package name="cn.cnm.pojo"/>
-    </typeAliases>
+    <!--<typeAliases>-->
+    <!--type：指定要起别名的类全类名， 默认别名是小写 alias：指定的别名 &ndash;&gt;-->
+    <!--<typeAlias type="cn.cnm.pojo.Flower" alias="flower"></typeAlias>&ndash;&gt;-->
+    <!--package：为某个包下的所有类取别名 &ndash;&gt;-->
+    <!--name：指定包名， 会将包以及包下的所有类取别名 &ndash;&gt;-->
+    <!--如果子包下有重名的类， 则需要单独给其中一个类取另一个名字以防冲突， 可以使用@Alias()注解指定 &ndash;&gt;-->
+    <!--<package name="cn.cnm.pojo"/>-->
+    <!--</typeAliases>-->
 
 </configuration>
