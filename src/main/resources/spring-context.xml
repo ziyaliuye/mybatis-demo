@@ -57,11 +57,30 @@
 
     <!-- 扫描所有的mapper接口的实现，让这些mapper能够自动注入； -->
     <!-- base-package：指定mapper接口的包名 -->
-    <mybatis-spring:scan base-package="cn.cnm.mapper"/>
+    <!-- 切记使用通用Mapper时， 不要和通用Mapper的配置重复了， 不然会报错 -->
+    <!--<mybatis-spring:scan base-package="cn.cnm.mapper"/>-->
     <!--
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.atguigu.mybatis.dao"></property>
     </bean>
     -->
+
+    <!-- 通用Mapper配置主类， MyBatis原生的配置类也叫MapperScannerConfigurer， 就是前面的org改为了tk -->
+    <!--<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">-->
+    <!--&lt;!&ndash; 指定Mapper所在的包 &ndash;&gt;-->
+    <!--<property name="basePackage" value="cn.cnm.mapper"/>-->
+    <!--<property name="properties">-->
+    <!--<value>-->
+    <!--mappers=tk.mybatis.mapper.common.Mapper-->
+    <!--</value>-->
+    <!--</property>-->
+    <!--</bean>-->
+
+    <!-- 通用Mapper的各项属性通过 properties 属性进行配置，如果默认配置就是一行 -->
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="basePackage" value="cn.cnm.mapper"/>
+    </bean>
+
+    <bean name="userService" class="cn.cnm.service.impl.UserServiceImpl"></bean>
 
 </beans>
