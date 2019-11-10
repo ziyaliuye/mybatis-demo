@@ -1,23 +1,24 @@
-package cn.cnm.Test;
+package cn.cnm.test;
 
-import cn.cnm.pojo.Flower;
+import cn.cnm.mapper.PeopleMapper;
+import cn.cnm.pojo.People;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
+import java.util.UUID;
 
 /**
  * @author lele
  * @version 1.0
- * @Description MyBatis的一个Demo
+ * @Description
  * @Email 414955507@qq.com
- * @date 2019/11/6 14:26
+ * @date 2019/11/7 10:10
  */
-public class Demo {
+public class BatchInsertDemo {
     public static void main(String[] args) {
         InputStream inputStream;
         try {
@@ -25,15 +26,18 @@ public class Demo {
             inputStream = Resources.getResourceAsStream("mybatis-config.xml");
             // 使用构建者模式（名称带 build）简化对象实例化过程
             SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
-            // 使用工厂模式（名称带 Factory）生产SqlSession
-            // （无参方法返回的是不自动提交session，需要手工提交，设置为true表示自动提交）
-            SqlSession session = factory.openSession();
-            // 开始调用 具体方法看什么操作和什么返回类型， 参数则是 namespace+id（类似于全路径+方法名）
-            List<Flower> list = session.selectList("cn.cnm.mapper.FlowerMapper.selectAll");
-            list.forEach(System.out::println);
-            // 关闭连接， 不然一直处于连接状态
-            session.close();
+            /* 获取sqlSession时需要指定为批量操作， MyBatis会为这些操作做一系列的优化 */
+            SqlSession session = factory.openSession(ExecutorType.BATCH);
 
+            PeopleMapper peopleMapper = session.getMapper(PeopleMapper.class);
+
+            // 插入10000条记录
+            for (int i = 100; i < 10100; i++) {
+                peopleMapper.insert(new People(i, UUID.randomUUID().toString().substring(0, 6), 18, i + 1));
+            }
+
+            session.commit();
+            session.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

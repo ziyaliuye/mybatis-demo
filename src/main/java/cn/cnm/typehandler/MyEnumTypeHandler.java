@@ -1,4 +1,4 @@
-package cn.cnm.TypeHandler;
+package cn.cnm.typehandler;
 
 import cn.cnm.status.PeopleStatic;
 import org.apache.ibatis.type.JdbcType;

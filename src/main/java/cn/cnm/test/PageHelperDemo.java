@@ -1,11 +1,8 @@
-package cn.cnm.Test;
+package cn.cnm.test;
 
 import cn.cnm.mapper.AirportMapper;
-import cn.cnm.mapper.FlowerAnnotationMapper;
-import cn.cnm.mapper.PeopleMapper;
 import cn.cnm.pojo.Airport;
 import cn.cnm.pojo.AirportExample;
-import cn.cnm.pojo.Flower;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

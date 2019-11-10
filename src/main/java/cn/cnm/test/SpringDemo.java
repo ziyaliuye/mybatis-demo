@@ -1,4 +1,4 @@
-package cn.cnm.Test;
+package cn.cnm.test;
 
 import cn.cnm.mapper.FlowerMapper;
 import cn.cnm.pojo.Flower;
